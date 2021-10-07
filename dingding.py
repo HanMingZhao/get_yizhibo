@@ -81,9 +81,10 @@ def downloading(m3u8_path, file_path):
 def main():
     start = time.time()
 
-    request_url_header = "https://dtliving-sz.dingtalk.com/live_hp/"
-    header = '20210509商品期权快速技巧'  # 标题
-    path = '/Users/icourt1/Documents/小马/{}'  # 本地目录创建
+    request_url_header = "https://dtliving-sh.dingtalk.com/live_hp/"
+    header = '文件名'  # 标题
+    doc_name = '目录'
+    path = '/home/ming/Documents/{}/{}'  # 本地目录创建
 
     map1 = dd.ts_path.replace("\n", "").split("#EXTINF:")
     map1.pop(0)
@@ -92,12 +93,12 @@ def main():
         m2 = m1.split(",")
         map2.append(request_url_header + m2[1])
 
-    if os.path.exists(path.format(header)):
+    if os.path.exists(path.format(doc_name, header)):
         pass
     else:
-        os.mkdir(path.format(header))
+        os.mkdir(path.format(doc_name, header))
 
-    downloading(map2, path.format(header))
+    downloading(map2, path.format(doc_name, header))
 
     end = time.time() - start
     print('下载完成，耗时：{}分{}秒'.format(int(end // 60), math.ceil(end % 60)))
